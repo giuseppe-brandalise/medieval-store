@@ -6,9 +6,8 @@ import productsMock from '../../mocks/products.mock';
 
 describe('ProductsService', function () {
   beforeEach(function () { sinon.restore(); });
-
   it('should return the new product when given all the informations', async () => {
-    const modelReturn = ProductModel.build(productsMock.newProduct);
+    const modelReturn = ProductModel.build(productsMock.product);
     sinon.stub(ProductModel, 'create').resolves(modelReturn);
 
     const serviceResponse = await productsService.createProduct(productsMock.newProduct);

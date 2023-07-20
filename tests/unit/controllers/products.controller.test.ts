@@ -25,5 +25,4 @@ describe('ProductsController', function () {
     expect(res.status).to.have.been.calledWith(201);
     expect(res.json).to.have.been.calledWith(productsMock.product);
   })
-
 });
