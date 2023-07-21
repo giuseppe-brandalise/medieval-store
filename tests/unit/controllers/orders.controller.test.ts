@@ -28,4 +28,13 @@ describe('OrdersController', function () {
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith([modelReturn]);
   });
+  it('should return the new order when given all the informations', async () => {
+    req.body = ordersMoks.newOrder;
+    sinon.stub(ordersService, 'createOrder').resolves(ordersMoks.newOrderInfo);
+
+    await ordersController.createOrder(req, res);
+
+    expect(res.status).to.have.been.calledWith(201);
+    expect(res.json).to.have.been.calledWith(ordersMoks.newOrderInfo);
+  });
 });

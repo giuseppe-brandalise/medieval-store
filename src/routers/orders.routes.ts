@@ -1,8 +1,17 @@
 import { Router } from 'express';
 import ordersController from '../controllers/orders.controller';
+import authMiddleware from '../middlewares/auth.middlewares';
+import ordersMiddleware from '../middlewares/orders.middleware';
 
-const productsRouter = Router();
+const ordersRouter = Router();
 
-productsRouter.get('/', ordersController.getAll);
+ordersRouter.get('/', ordersController.getAll);
+ordersRouter.post(
+  '/',
+  authMiddleware,
+  ordersMiddleware.verifyUserId,
+  ordersMiddleware.verifyProductsIds,
+  ordersController.createOrder,
+);
 
-export default productsRouter;
+export default ordersRouter;

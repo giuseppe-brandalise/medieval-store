@@ -13,5 +13,13 @@ describe('ProductsService', function () {
     const serviceResponse = await productsService.createProduct(productsMock.newProduct);
 
     expect(serviceResponse).to.deep.eq(productsMock.product);
-  })
+  });
+  it('should return a list with all products', async () => {
+    const modelReturn = ProductModel.build(productsMock.product)
+    sinon.stub(ProductModel, 'findAll').resolves([modelReturn]);
+    
+    const serviceResponse = await productsService.getAll();
+
+    expect(serviceResponse).to.deep.eq([modelReturn]);
+  });
 });
