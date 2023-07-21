@@ -13,7 +13,6 @@ const getAll = async (): Promise<OrderSequelizeModel[]> => {
     group: ['Order.id'],
     raw: true,
   });
-  console.log('modelResponse', modelResponse);
   return modelResponse;
 };
 
