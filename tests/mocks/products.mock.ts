@@ -14,23 +14,7 @@ const product: Product = {
   orderId: 4
 }
 
-const allProducts = [
-  {
-    id: 1,
-    name: 'Pedra Filosofal',
-    price: '20 gold',
-    orderId: null
-  },
-  {
-    id: 2,
-    name: 'Lança do Destino',
-    price: '100 diamond',
-    orderId: 1
-  }
-]
-
 export default {
   newProduct,
   product,
-  allProducts,
 };
